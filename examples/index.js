@@ -12,30 +12,27 @@ megabus.LOCATION_CODES = {
 
 if (module === require.main) {
   let finder = new megabus.TicketFinder({
-    startDate: '1/1/2016',
-    endDate: '3/14/2016',
+    startDate: '3/9/2016',
+    endDate: '3/24/2016',
     routes: [
-      // New York <-> Boston
-      new megabus.Route('New York', 'Boston'),
-      new megabus.Route('Boston', 'New York'),
+      // Toronto to Chicago
+      new megabus.Route('Toronto', 'Chicago'),
+      new megabus.Route('Chicago', 'Toronto'),
 
-      // New York <-> Chicago
-      new megabus.Route('New York', 'Chicago'),
-      new megabus.Route('Chicago', 'New York'),
+      // Boston to Chicago
+      new megabus.Route('Boston', 'Chicago'),
+      new megabus.Route('Chicago', 'Boston'),
 
       // New York <-> New Haven
       new megabus.Route('New York', 'New Haven'),
       new megabus.Route('New Haven', 'New York'),
 
-      // New York <-> Toronto
-      new megabus.Route('New York', 'Toronto'),
-      new megabus.Route('Toronto', 'New York'),
     ]
   });
 
   finder
     // .getTicketsPromise()
-    .getTicketsInPriceRangePromise(0, 10)
+    .getTicketsInPriceRangePromise(20, 35)
     .then((tickets) => {
       tickets.forEach((ticket, idx) => {
         console.log(`[${idx + 1}] ${ticket.toString()}`);
